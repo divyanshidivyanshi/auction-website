@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bid Wave - Sell</title>
+  <link rel="stylesheet" href="sell.css">
+</head>
+<body>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <img style="width:195px;" src="logo.png" alt="Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="auction.html">AUCTIONS+</a></li>
+          <li><a href="buy.html">BUY</a></li>
+          <li><a href="sell.html">SELL</a></li>
+          <li><a href="department.html">DEPARTMENTS</a></li>
+          <li><a href="reach us.html">REACH US</a></li>
+          <li><a href="login.html" class="link-bg" id="loginNav">LOGIN/REGISTER</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <u><h1 style="font-size:50px;">Sell</h1></u>
+  <img style="width:100%;" src="sel.jpg">
+
+  <p style="font-size:20px;">
+    As the owner, you will have to bear packing, shipping, and insurance charges. 
+    Our platform ensures your product reaches the right buyers with transparency and ease.
+  </p>
+
+  <!-- ✅ Static content (for visitors) -->
+  <div id="static-sell">
+    <p style="font-size:18px; margin-top:20px;">
+      Please <a href="login.html">login</a> or register to upload your items for auction.
+    </p>
+  </div>
+
+  <!-- ✅ Auction Upload Form (only for logged-in users) -->
+  <div id="dynamic-sell" style="display:none; margin-top:40px;">
+    <h2>Add Your Item for Auction</h2>
+    <form id="auctionForm">
+      <input type="text" id="title" placeholder="Product Title" required><br><br>
+      <input type="text" id="description" placeholder="Description" required><br><br>
+      <input type="text" id="image" placeholder="Image URL"><br><br>
+      <input type="datetime-local" id="endTime" required><br><br>
+      <button type="submit">Add Auction</button>
+    </form>
+    <p id="msg" style="color:red; font-weight:bold;"></p>
+  </div>
+
+  <script>
+    // Navbar update
+    function updateNavbar() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const nav = document.querySelector("nav ul");
+
+      if (user) {
+        nav.innerHTML = `
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="auction.html">AUCTIONS+</a></li>
+          <li><a href="buy.html">BUY</a></li>
+          <li><a href="sell.html">SELL</a></li>
+          <li><a href="department.html">DEPARTMENTS</a></li>
+          <li><a href="reach us.html">REACH US</a></li>
+          <li><span>👤 ${user.name}</span></li>
+          <li><a href="#" onclick="logout()">LOGOUT</a></li>
+        `;
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    }
+
+    // Show/hide sell form based on login
+    function checkUser() {
+      const token = localStorage.getItem("token");
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (token && user) {
+        document.getElementById("static-sell").style.display = "none";
+        document.getElementById("dynamic-sell").style.display = "block";
+      }
+    }
+
+    // Auction form submit
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("auctionForm");
+      if (form) {
+        form.addEventListener("submit", async e => {
+          e.preventDefault();
+
+          const token = localStorage.getItem("token");
+          if (!token) {
+            alert("⚠️ Login required!");
+            return;
+          }
+
+          const title = document.getElementById("title").value;
+          const description = document.getElementById("description").value;
+          const image = document.getElementById("image").value;
+          const endTime = document.getElementById("endTime").value;
+
+          try {
+            const res = await fetch("http://localhost:3000/api/auctions", {
+              method: "POST",
+              headers: { 
+                "Content-Type": "application/json",
+                "Authorization": token
+              },
+              body: JSON.stringify({ title, description, image, endTime })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+              document.getElementById("msg").style.color = "green";
+              document.getElementById("msg").innerText = "✅ Auction Created!";
+              form.reset();
+            } else {
+              document.getElementById("msg").innerText = "❌ " + data.msg;
+            }
+          } catch {
+            document.getElementById("msg").innerText = "⚠️ Server error, try again later.";
+          }
+        });
+      }
+    });
+
+    // Init
+    window.onload = () => {
+      updateNavbar();
+      checkUser();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+ <title>Bid Wave</title>
+</head>
+<body>
+<link rel="stylesheet"href="style.css">
+
+ <div class="container">
+<div class="navbar">
+<div class="logo">
+<img style="width:195px;" src="logo.png"alt="Logo">
+</div>
+<nav><ul>
+<li><a href="home.html">HOME</a>
+<li><a href="auction.html">AUCTIONS+</a></li>
+<li><a href="buy.html">BUY</a></li>
+<li><a href="sell.html">SELL</a></li>
+<li><a href="department.html">DEPARTMENTS</a></li>
+<li><a href="reach us.html">REACH US</a></li>
+<li><a href="login.html" class="link-bg">LOGIN/REGISTER</a></li></ul></nav>
+</div>
+</div>
+<u><h1 style="font-size:50px;">Reach Us</h1></u>
+<!-- Right Side: Contact Form -->
+    <div class="contact-box">
+      <h2>Contact Us</h2>
+      <p>Thank you for showing interest in BidWave. We appreciate your inquiries and feedback. Please don't hesitate to reach out to us using the details provided below:</p>
+
+      <form>
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="department">Choose Department</label>
+        <select id="department" name="department">
+          <option value="">-- Select Department --</option>
+          <option value="Timepieces & Mordern Indian Arts">Timepieces & Mordern Indian Arts</option>
+          <option value="Numismatic & Philately">Numismatic & Philately</option>
+          <option value="Fine writing & Instruments">Fine writing & Instruments</option>
+          <option value="Jewellery & Silverware">Jewellery & Silverware</option>
+          <option value="Indian Antiques">Indian Antiques</option>
+          <option value="Classic & Vintage Automobiles">Classic & Vintage Automobiles</option>
+          <option value="others">Others</option>
+        </select>
+
+        <label for="query">Type your query here</label>
+        <textarea id="query" name="query" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+   </div>
+  </div> <!-- End of .container -->
+
+  <script>
+document.querySelector("form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const fullname = document.getElementById("fullname").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const department = document.getElementById("department").value;
+  const query = document.getElementById("query").value.trim();
+
+  if (!fullname || !email || !query) {
+    alert("Please fill name, email and your query.");
+    return;
+  }
+
+  try {
+    const res = await fetch("/api/contact", {           // relative path works with same host
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fullname, email, phone, department, query })
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+      alert(data.msg);
+      e.target.reset();
+    } else {
+      alert(data.msg || "Failed to submit. Try again.");
+    }
+  } catch (err) {
+    console.error("Contact submit error:", err);
+    alert("Server error. Try again later.");
+  }
+});
+
+window.onload = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const nav = document.querySelector("nav ul");
+
+  if (user) {
+    // अगर login है तो Login/Register की जगह username + Logout दिखाओ
+    nav.innerHTML = `
+      <li><a href="home.html">HOME</a></li>
+      <li><a href="auction.html">AUCTIONS+</a></li>
+      <li><a href="buy.html">BUY</a></li>
+      <li><a href="sell.html">SELL</a></li>
+      <li><a href="department.html">DEPARTMENTS</a></li>
+      <li><a href="reach us.html">REACH US</a></li>
+      <li><span>👤 ${user.name}</span></li>
+      <li><a href="#" onclick="logout()">LOGOUT</a></li>
+    `;
+  }
+};
+
+function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+
+
+</script>
