@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
- <title>Bid Wave</title>
+  <title>Bid Wave - Auctions</title>
+  <link rel="stylesheet" href="auctin.css">
 </head>
 <body>
-<link rel="stylesheet"href="style.css">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <img style="width:195px;" src="logo.png" alt="Logo">
+      </div>
+      <nav>
+        <ul id="navLinks">
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="auction.html">AUCTIONS+</a></li>
+          <li><a href="buy.html">BUY</a></li>
+          <li><a href="sell.html">SELL</a></li>
+          <li><a href="department.html">DEPARTMENTS</a></li>
+          <li><a href="reach us.html">REACH US</a></li>
+          <li id="authLink"><a href="login.html" class="link-bg">LOGIN/REGISTER</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 
- <div class="container">
-<div class="navbar">
-<div class="logo">
-<img style="width:195px;" src="logo.png"alt="Logo">
-</div>
-<nav><ul>
-<li><a href="home.html">HOME</a>
-<li><a href="auction.html">AUCTIONS+</a></li>
-<li><a href="buy.html">BUY</a></li>
-<li><a href="sell.html">SELL</a></li>
-<li><a href="department.html">DEPARTMENTS</a></li>
-<li><a href="reach us.html">REACH US</a></li>
-<li><a href="login.html" class="link-bg">LOGIN/REGISTER</a></li></ul></nav>
-</div>
-</div>
-<section id="auctions" class="auction-section">
+  <section id="auctions" class="auction-section">
     <h2>Auction Categories</h2>
 
-    <button class="accordion"><strong>Live Auctions</button>
-    <div class="panel">
-      <p>Current live auctions...</p>
-    </div><input type="text" id="live-search" class="search-box" placeholder="Search Live Auctions...">
-      <ul id="live-auctions-list">
+    <!-- ✅ Static Live Auctions -->
+    <div id="static-live">
+      <h3>Live Auctions</h3>
+      <ul>
         <li>Art Auction</li>
         <li>Vintage Cars</li>
         <li>Rare Coins</li>
@@ -38,71 +40,150 @@
       </ul>
     </div>
 
-
-    <button class="accordion"><strong>Upcoming Auctions</button>
-    <div class="panel">
-      <p>Details of upcoming auctions...</p>
-<input type="text" id="upcoming-search" class="search-box" placeholder="Search Upcoming Auctions...">
-      <ul id="upcoming-auctions-list">
-        
-        <div class="image-text-row">
-         <div class="image-box">
-          <p>Heirloom collectibiles</p>
-          <img style="width:80%;" src="48.jpg"><p style="font-size:20px;">Heirloom Collectibles - May 2025<br>Yet to be Announced</p></div>
-        
-         <div class="image-box">
-          <p>Jewelry Collection</p>
-         <img style="width:80%;" src="js.jpg"><p style="font-size:20px;">Contemporary Indian Art - May 2025<br>Yet to be Announced</p></div>
-        
-      </ul>
+    <!-- ✅ Dynamic Live Auctions -->
+    <div id="dynamic-live" style="display:none;">
+      <h3>Live Auctions</h3>
+      <div id="live-auctions-list">
+        <p>Loading live auctions...</p>
+      </div>
     </div>
 
-    <button class="accordion"><strong>Auction Results</button>
-    <div class="panel">
-      <p>Recent auction results...</p>
-<div class="image-text-row">
-  <div class="image-box">
-<img style="width:100%;" src="51.jpg"><p style="font-size:20px;">Classics of Motoring<br>November 20-22, 2024<br>
-Total Sale
-<br>₹ 2,12,72,922</p></div>
-<div class="image-box">
-<img style="width:100%;" src="58.jpg"><p style="font-size:20px;">Impherial Treasures<br>
-February 25-27, 2025
-Total Sale<br>
-₹ 5,47,50,580</p></div>
-<div class="image-box">
-<img style="width:100%;" src="69.jpg"><p style="font-size:20px;">Heirloom Jewellry<br>December 20-21, 2024<br>
-Total Sale
-<br>₹ 12,77,00,790</p> </div>
-<div class="image-box">
-<img style="width:100%;" src="90.jpg"><p style="font-size:20px;">Opluent Heritage<br> June4-June15<br>2024<br>Total Sale
-<br>₹ 8,17,21,517</p></div>
-<div class="image-box">
-<img style="width:100%;" src="55.jpg"><p style="font-size:20px;">Manifest<br>September 24-26, 2024<br>
-Total Sale
-<br>₹ 88,12,42,730</p></div></div>
-<div class="image-text-row">
-  <div class="image-box">
-<img style="width:100%;" src="7s.jpg"><p style="font-size:20px;">International Iconic Masterpieces<br> & Editions
-time<br>July 20-21, 2023<br>Total Sale<br>₹ 16,10,97,471</p></div>
-<div class="image-box">
-<img style="width:100%;" src="8s.jpg"><p style="font-size:20px;">Heirloom Treasures
-time<br>March 27-28, 2024<br>Total Sale<br>₹ 7,01,75,397</p></div>
-<div class="image-box">
-<img style="width:100%;" src="9s.jpg"><p style="font-size:20px;">Imperial Treasures
-time<br>August 12-13, 2023<br>
-Total Sale<br>₹ 3,16,87,952</p> </div>
-<div class="image-box">
-<img style="width:100%;" src="6s.jpg"><p style="font-size:20px;">Jewellery, Silver & Timepieces<br>May 12-13,<br>2024<br>Total Sale
-<br>₹₹ 18,36,98,481 </p></div>
-<div class="image-box">
-<img style="width:100%;" src="5s.jpg"><p style="font-size:20px;">Stroke & Structure<br>June 20-21, 2024<br>Total Sale
-₹ 30,88,86,159</p></div></div>
+    <!-- Upcoming Auctions (full static with images) -->
+    <h3>Upcoming Auctions</h3>
+    <p>Details of upcoming auctions...</p>
+    <div class="image-text-row">
+      <div class="image-box">
+        <p>Heirloom Collectibles</p>
+        <img style="width:80%;" src="48.jpg">
+        <p style="font-size:20px;">Heirloom Collectibles - May 2025<br>Yet to be Announced</p>
+      </div>
+      <div class="image-box">
+        <p>Jewelry Collection</p>
+        <img style="width:80%;" src="js.jpg">
+        <p style="font-size:20px;">Contemporary Indian Art - May 2025<br>Yet to be Announced</p>
+      </div>
+    </div>
 
+    <!-- Auction Results (all your static images) -->
+    <h3>Auction Results</h3>
+    <div class="image-text-row">
+      <div class="image-box">
+        <img style="width:100%;" src="51.jpg">
+        <p style="font-size:20px;">Classics of Motoring<br>Nov 20–22, 2024<br>Total Sale ₹2,12,72,922</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="58.jpg">
+        <p style="font-size:20px;">Imperial Treasures<br>Feb 25–27, 2025<br>Total Sale ₹5,47,50,580</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="69.jpg">
+        <p style="font-size:20px;">Heirloom Jewellery<br>Dec 20–21, 2024<br>Total Sale ₹12,77,00,790</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="90.jpg">
+        <p style="font-size:20px;">Opulent Heritage<br>Jun 4–15, 2024<br>Total Sale ₹8,17,21,517</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="55.jpg">
+        <p style="font-size:20px;">Manifest<br>Sep 24–26, 2024<br>Total Sale ₹88,12,42,730</p>
+      </div>
+    </div>
 
-
-
+    <div class="image-text-row">
+      <div class="image-box">
+        <img style="width:100%;" src="7s.jpg">
+        <p style="font-size:20px;">International Iconic Masterpieces & Editions<br>Jul 20–21, 2023<br>Total Sale ₹16,10,97,471</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="8s.jpg">
+        <p style="font-size:20px;">Heirloom Treasures<br>Mar 27–28, 2024<br>Total Sale ₹7,01,75,397</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="9s.jpg">
+        <p style="font-size:20px;">Imperial Treasures<br>Aug 12–13, 2023<br>Total Sale ₹3,16,87,952</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="6s.jpg">
+        <p style="font-size:20px;">Jewellery, Silver & Timepieces<br>May 12–13, 2024<br>Total Sale ₹18,36,98,481</p>
+      </div>
+      <div class="image-box">
+        <img style="width:100%;" src="5s.jpg">
+        <p style="font-size:20px;">Stroke & Structure<br>Jun 20–21, 2024<br>Total Sale ₹30,88,86,159</p>
+      </div>
     </div>
   </section>
+
+  <script>
+    // Navbar update
+    function renderNavbar() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const authLink = document.getElementById("authLink");
+
+      if (user) {
+        authLink.innerHTML = `
+          <span>👤 ${user.name}</span>
+          <a href="#" onclick="logout()">LOGOUT</a>
+        `;
+      } else {
+        authLink.innerHTML = `<a href="login.html" class="link-bg">LOGIN/REGISTER</a>`;
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "home.html";
+    }
+
+    // Dynamic live auctions
+    async function loadLiveAuctions() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const staticLive = document.getElementById("static-live");
+      const dynamicLive = document.getElementById("dynamic-live");
+
+      if (!user) {
+        staticLive.style.display = "block";
+        dynamicLive.style.display = "none";
+        return;
+      }
+
+      staticLive.style.display = "none";
+      dynamicLive.style.display = "block";
+
+      try {
+        const res = await fetch("http://localhost:3000/api/auctions");
+        const auctions = await res.json();
+        const list = document.getElementById("live-auctions-list");
+
+        list.innerHTML = "";
+
+        if (!auctions.length) {
+          list.innerHTML = "<p>⚠️ No live auctions right now.</p>";
+          return;
+        }
+
+        auctions.forEach(a => {
+          const item = document.createElement("div");
+          item.classList.add("image-box");
+          item.innerHTML = `
+            ${a.image ? `<img src="${a.image}" style="width:100%; height:auto;">` : ""}
+            <p style="font-size:20px;">
+              <strong>${a.title}</strong><br>
+              Current Bid: ₹${a.currentBid}<br>
+              Ends: ${new Date(a.endTime).toLocaleDateString()}
+            </p>
+          `;
+          list.appendChild(item);
+        });
+      } catch (err) {
+        document.getElementById("live-auctions-list").innerHTML = "<p>⚠️ Failed to load auctions.</p>";
+      }
+    }
+
+    renderNavbar();
+    loadLiveAuctions();
+  </script>
+</body>
+</html>
 
 
