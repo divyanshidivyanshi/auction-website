@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+ <title>Bid Wave</title>
+</head>
+<body>
+<link rel="stylesheet"href="style.css">
+
+ <div class="container">
+<div class="navbar">
+<div class="logo">
+<img style="width:195px;" src="logo.png"alt="Logo">
+</div>
+<nav><ul>
+<li><a href="home.html">HOME</a>
+<li><a href="auction.html">AUCTIONS+</a></li>
+<li><a href="buy.html">BUY</a></li>
+<li><a href="sell.html">SELL</a></li>
+<li><a href="department.html">DEPARTMENTS</a></li>
+<li><a href="reach us.html">REACH US</a></li>
+<li><a href="login.html" class="link-bg">LOGIN/REGISTER</a></li></ul></nav>
+</div>
+</div>
+<div class="container">
+    <!-- Login Form -->
+    <div class="form-box" id="login-form">
+      <h2>Login</h2>
+      <form>
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+      </form>
+      <div class="toggle-btn">
+        <p>Don't have an account? <a href="javascript:void(0)" onclick="toggleForm()">Register</a></p>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div class="form-box" id="register-form" style="display: none;">
+      <h2>Register</h2>
+      <form>
+        <label for="register-name">Full Name</label>
+        <input type="text" id="register-name" name="name" placeholder="Enter your full name" required>
+
+        <label for="register-email">Email</label>
+        <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
+
+        <label for="register-password">Password</label>
+        <input type="password" id="register-password" name="password" placeholder="Create a password" required>
+
+        <label for="register-confirm-password">Confirm Password</label>
+        <input type="password" id="register-confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+
+        <button type="submit">Register</button>
+      </form>
+      <div class="toggle-btn">
+        <p>Already have an account? <a href="javascript:void(0)" onclick="toggleForm()">Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleForm() {
+      var loginForm = document.getElementById('login-form');
+      var registerForm = document.getElementById('register-form');
+      if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+      } else {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+      }
+    }
+   </script>

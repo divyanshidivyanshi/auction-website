@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+ <title>Bid Wave</title>
+</head>
+<body>
+ <div class="container">
+<div class="navbar">
+<div class="logo">
+<img style="width:195px;" src="logo.png"alt="Logo">
+</div>
+<nav><ul>
+<li><a href="home.html">HOME</a>
+<li><a href="auction.html">AUCTIONS+</a></li>
+<li><a href="buy.html">BUY</a></li>
+<li><a href="sell.html">SELL</a></li>
+<li><a href="department.html">DEPARTMENTS</a></li>
+<li><a href="reach us.html">REACH US</a></li>
+<li><a href="login.html" class="link-bg">LOGIN/REGISTER</a></li></ul></nav>
+</div>
+</div>
+
+
+<div class="row">
+<div class="col-2">
+<p style ="font-size:20px">Our platform transforms the auction process with an intuitive interface, ensuring transparent transactions and valuable insights for buyers and sellers.</p>
+
+<link rel="stylesheet"href="home.css">
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch('http://localhost:3000/api/auctions') // Update this to match your backend
+      .then(response => response.json())
+      .then(auctions => {
+        const container = document.getElementById('auction-container');
+        
+        auctions.forEach(auction => {
+          const box = document.createElement('div');
+          box.className = 'image-box';
+
+          box.innerHTML = `
+            <img style="width:100%;" src="${auction.imageUrl}" alt="${auction.title}" />
+            <p style="font-size:20px;">${auction.title}<br>${auction.date}</p>
+          `;
+
+          container.appendChild(box);
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching auctions:", error);
+      });
+  });
+</script>
+
+
+</body>
+   <div class="slider">
+  <input type="radio" name="slider" id="slide1" checked>
+  <input type="radio" name="slider" id="slide2">
+  <input type="radio" name="slider" id="slide3">
+  
+  <div class="slides">
+    <div class="slide s1">
+      <img src="29.jpg" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="28.jpg" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="56.jpg" alt="Slide 3">
+    </div>
+  </div>
+  
+  <div class="navigation-manual">
+    <label for="slide1" class="manual-btn">></label>
+    <label for="slide2" class="manual-btn"><</label>
+    <label for="slide3" class="manual-btn">>></label>
+  </div>
+</div>
+<a href="catalogue.html" class="link-bg"> VIEW CATALOGUE</a>
+<u>
+<h1 style="font-size:50px;">Auctions On The Way</h1></u>
+<div class="inline-image-text"><p style ="font-size:30px;">At BidWave, we transform the auction experience by<br> connecting buyers and sellers on a secure, user-friendly<br> platform. We champion transparency and fairness, ensuring<br> every bid counts and maximizing value for all participants.<br> Join us and experience the excitement of winning!"<br>
+Transforming auctions into a transparent and engaging <br>experience, where buyers and sellers connect <br>securely to maximize value for all.""<br>
+Over the years, we have curated awide range of online <br>auctions in India, covering a diverse array of categories. <br>Our portfolio boasts an impressive collection of Modern<br> Indian Art from famous painters,exquisite vintage<br> jewellery, fine silverware,rare timepieces, luxurious<br> textiles,coveted celebrity memorabilia, rare books,<br> numismatic treasures, philatelic gems, and even vintage <br>cars.Take a look at the offerings in our upcoming online<br> auctions</p>
+<div class="image-with-text">
+<img style="width:80%;" src="48.jpg"><p style="font-size:20px;">Heirloom collectibiles<br>Timepieces & Silver</p></div>
+<img style="width:20%;" src="37.jpg">
+</div>
+<a href="auction.html" class="link-bg">ALL UPCOMING AUCTIONS</a>
+<u><h2 style="font-size:50px;">Most Recent Auctions<h2></u>
+<div class="image-text-row">
+  <div class="image-box">
+<img style="width:100%;" src="51.jpg"><p style="font-size:20px;">Classics of Motoring<br>November 20-November 22<br>2024</p></div>
+<div class="image-box">
+<img style="width:100%;" src="58.jpg"><p style="font-size:20px;">Impherial Treasures<br> Feb 15-Feb 24<br>2025</p></div>
+<div class="image-box">
+<img style="width:100%;" src="69.jpg"><p style="font-size:20px;">Heirloom Jewellry</p> </div>
+<div class="image-box">
+<img style="width:100%;" src="90.jpg"><p style="font-size:20px;">Opluent Heritage<br> June4-June15<br>2024</p></div>
+<div class="image-box">
+<img style="width:100%;" src="55.jpg"><p style="font-size:20px;">Manifest<br>Nov 20-Nov22<br>2024</p></div></div> 
+<h2 style="font-size:50px;"><u>Most Recent Auctions</u></h2>
+<div class="image-text-row" id="auction-container">
+  <!-- Dynamic content will be inserted here -->
+</div>
