@@ -1,0 +1,209 @@
+ {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.container{
+  max-width:1300px;
+  margin:auto;
+  padding left:25px;
+  padding-right:25px;
+}
+.link-bg:nth-child(1) {
+  background-color: #FFFDD0; /* Cream background */
+  color: #000;               /* Text color */
+  padding: 8px 14px;
+  text-decoration: none;     /* Remove underline */
+  border-radius: 5px;        /* Optional: rounded corners */
+}
+.navbar{
+   display:flex;
+   align-items:centre;
+   padding:20px;
+}
+.logo img {
+  max-width: 100%;
+}
+nav{
+   flex:1;
+   text-align:center;
+   line-height:30px;
+}
+nav ul{
+   display:inline-block;
+   list-style-type:none;
+}
+nav ul li{
+    display :inline-block;
+    margin-right:20px;
+   
+}
+a{ 
+   font-size:20px;
+   font-weight:600;
+   text-decoration:none;
+   color:#555;
+}
+p{
+  color:#555;
+}
+.row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:space-around;
+}
+<div class="slider">
+  <input type="radio" name="slider" id="slide1" checked>
+  <input type="radio" name="slider" id="slide2">
+  <input type="radio" name="slider" id="slide3">
+
+  <div class="slides">
+    <div class="slide s1">
+      <img src="slide1.jpg" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="slide2.jpg" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="slide3.jpg" alt="Slide 3">
+    </div>
+  </div>
+
+  <div class="navigation-manual">
+    <label for="slide1" class="manual-btn"></label>
+    <label for="slide2" class="manual-btn"></label>
+    <label for="slide3" class="manual-btn"></label>
+  </div>
+</div>
+
+
+---
+
+
+.slider {
+  width: 100%;
+  max-width: 1300px;
+  height: 100px;
+  margin: 40px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background:#f0f0f0;
+}
+
+.slides {
+  display: flex;
+  width: 100%; /* 3 slides */
+  height: 100%;
+  transition: 0.6s;
+}
+
+.slide {
+  width: 100%;
+  flex: 1 0 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.slide:last-child img {
+  width: 100%;
+  height: 97%;
+  object-fit: contain;
+}
+/* Hide radio buttons */
+input[name="slider"] {
+  display: none;
+}
+
+/* Slide movement */
+#slide1:checked ~ .slides { transform: translateX(0); }
+#slide2:checked ~ .slides { transform: translateX(-100%); }
+#slide3:checked ~ .slides { transform: translateX(-200%); }
+
+/* Navigation buttons */
+.navigation-manual {
+  position: absolute;
+   right:15px;
+  bottom: 15px;
+  display: flex;
+  gap: 10px;
+}
+.manual-btn {
+  border: 2px solid #555;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 180s;
+}
+
+.manual-btn:hover {
+  background: #555;
+}
+@media(max-width:768px){
+      .slider{
+      height:200px;
+}
+}
+
+.inline-image-text {
+  display: flex;
+  align-items: left; /* vertically center */
+  gap: 5px; /* space between text and image */
+}
+
+.inline-image-text img {
+  width: 40px; /* adjust size as needed */
+  height: auto;
+}
+.image-with-text {
+  text-align: left; /* center image and text */
+  max-width: 300px;   /* optional: control size */
+  margin: auto;
+}
+
+.image-with-text img {
+  width: 100%; /* or set to a specific size */
+  height: auto;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.image-with-text p {
+  font-size: 14px;
+  color: #555;
+}
+.link-bg {
+  background-color: #ffcc00; /* Yellow background */
+  color: #000;               /* Text color */
+  padding: 8px 14px;
+  text-decoration: none;     /* Remove underline */
+  border-radius: 5px;        /* Optional: rounded corners */
+}
+.image-text-row {
+  display: flex;
+  justify-content: left;
+  gap: 30px;
+  flex-wrap: wrap; /* keeps it responsive */
+  margin: 40px auto;
+}
+
+.image-box {
+  text-align: center;
+  width: 230px; /* adjust size */
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.image-box p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
